@@ -1,0 +1,4 @@
+db/
+.env
+external-initiator
+node_modules/
