@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
-	"fmt"
 
 	"github.com/smartcontractkit/chainlink/core/logger"
 	"github.com/smartcontractkit/external-initiator/store"

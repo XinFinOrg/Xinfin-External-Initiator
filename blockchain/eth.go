@@ -3,7 +3,6 @@ package blockchain
 import (
 	"encoding/json"
 	"math/big"
-	"fmt"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"

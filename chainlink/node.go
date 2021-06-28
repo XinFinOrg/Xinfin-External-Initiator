@@ -73,10 +73,9 @@ func (cl Node) sendJobrunTrigger(jobId string, data []byte) error {
 	u.Path = fmt.Sprintf("/v2/specs/%s/runs", jobId)
 
 	actualValue := string(data[:])
-	modifiedValue := strings.ReplaceAll(actualValue,"xdc","0x",1)
+	modifiedValue := strings.ReplaceAll(actualValue,"xdc","0x")
 	toSendData := []byte(modifiedValue)
 	
-	fmt.Print("modifiedValue",modifiedValue)
 
 	request, err := http.NewRequest(http.MethodPost, u.String(), bytes.NewReader(toSendData))
 

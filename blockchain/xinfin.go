@@ -3,7 +3,6 @@ package blockchain
 import (
 	"encoding/json"
 	"math/big"
-	"fmt"
 	"strings"
 
 	"github.com/smartcontractkit/chainlink/core/store/models"
@@ -203,7 +202,6 @@ func (k xinfinManager) ParseResponse(data []byte) ([]subscriber.Event, bool) {
 		actualValue := string(msg.Result[:])
 		modifiedValue := strings.Replace(actualValue,"xdc","0x",1)
 		toSendData := []byte(modifiedValue)
-		fmt.Print("modiied value",modifiedValue)
 		
 		if err := json.Unmarshal(toSendData, &rawEvents); err != nil {
 			logger.Error("unmarshal:", err)

@@ -60,7 +60,6 @@ func TestMain(m *testing.M) {
 			return
 		}
 
-		fmt.Println("created...")
 		w.WriteHeader(http.StatusCreated)
 	}))
 	defer ts.Close()

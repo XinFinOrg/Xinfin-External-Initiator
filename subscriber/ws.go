@@ -3,7 +3,6 @@ package subscriber
 import (
 	"errors"
 	"time"
-	"fmt"
 
 	"github.com/gorilla/websocket"
 	"github.com/smartcontractkit/chainlink/core/logger"
