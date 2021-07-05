@@ -118,6 +118,7 @@ func logEventToOracleRequest(log models.Log) (models.JSON, error) {
 	if err != nil {
 		return js, fmt.Errorf("error parsing CBOR: %v", err)
 	}
+	fmt.Print("ddresssdfsdfds",log.Address.String())
 	return js.MultiAdd(models.KV{
 		"address":          log.Address.String(),
 		"dataPrefix":       bytesToHex(dataPrefixBytes),

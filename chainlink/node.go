@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"net/url"
 	"time"
-	"strings"
 
 	"github.com/avast/retry-go"
 	"github.com/prometheus/client_golang/prometheus"
@@ -72,12 +71,15 @@ func (cl Node) sendJobrunTrigger(jobId string, data []byte) error {
 	u := cl.Endpoint
 	u.Path = fmt.Sprintf("/v2/specs/%s/runs", jobId)
 
-	actualValue := string(data[:])
-	modifiedValue := strings.ReplaceAll(actualValue,"xdc","0x")
-	toSendData := []byte(modifiedValue)
-	
+	// actualValue := string(data[:])
+	// modifiedValue := strings.ReplaceAll(actualValue,"xdc","0x")
+	// toSendData := []byte(modifiedValue)
 
-	request, err := http.NewRequest(http.MethodPost, u.String(), bytes.NewReader(toSendData))
+	// fmt.Print("testinggngngng1",actualValue)
+	// fmt.Print("testinggngngng2",modifiedValue)
+
+
+	request, err := http.NewRequest(http.MethodPost, u.String(), bytes.NewReader(data))
 
 	
 	if err != nil {

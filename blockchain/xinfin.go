@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"math/big"
 	"strings"
+	"fmt"
 
 	"github.com/smartcontractkit/chainlink/core/store/models"
 	"github.com/ethereum/go-ethereum/common"
@@ -200,9 +201,11 @@ func (k xinfinManager) ParseResponse(data []byte) ([]subscriber.Event, bool) {
 		var rawEvents []models.Log
 
 		actualValue := string(msg.Result[:])
+		fmt.Print("actual value",actualValue)
 		modifiedValue := strings.Replace(actualValue,"xdc","0x",1)
+		fmt.Print("modifiedValue value",modifiedValue)
 		toSendData := []byte(modifiedValue)
-		
+
 		if err := json.Unmarshal(toSendData, &rawEvents); err != nil {
 			logger.Error("unmarshal:", err)
 			return nil, false
@@ -210,6 +213,7 @@ func (k xinfinManager) ParseResponse(data []byte) ([]subscriber.Event, bool) {
 
 		for _, evt := range rawEvents {
 			request, err := logEventToOracleRequest(evt)
+			fmt.Print("requestrequest",request,evt.Data,evt.Address)
 			if err != nil {
 				logger.Error("failed to get oracle request:", err, evt.Data, evt.Address)
 				return nil, false
